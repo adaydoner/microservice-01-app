@@ -30,7 +30,7 @@ public class CatalogRestController {
 		
 		UserRatings ratings = webClientBuilder.build()
 				.get()
-				.uri("http://localhost:8083/ratingsdata/users/"+ userId)
+				.uri("http://user-rated-movies-service/ratingsdata/users/"+ userId)
 				.retrieve()
 				.bodyToMono(UserRatings.class)
 				.block();
@@ -40,7 +40,7 @@ public class CatalogRestController {
 			//Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+ oneOfRatings.getMovieId(),Movie.class);
 			Movie movie = webClientBuilder.build() // creating web client 
 					.get() // http method that we want to use
-					.uri("http://localhost:8082/movies/"+ oneOfRatings.getMovieId()) // requested uri
+					.uri("http://movie-info-service/movies/"+ oneOfRatings.getMovieId()) // requested uri
 					.retrieve()
 					.bodyToMono(Movie.class) // mono mean response body eventually retrieved for spesified class.
 					.block(); // wait until bodyToMono happens, we use it because we don't do reactive programming
