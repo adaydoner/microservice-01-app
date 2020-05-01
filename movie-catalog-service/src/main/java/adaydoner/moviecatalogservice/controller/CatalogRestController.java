@@ -17,9 +17,7 @@ import adaydoner.moviecatalogservice.model.UserRatings;
 @RestController
 @RequestMapping("/catalog")
 public class CatalogRestController {
-	
-/*	@Autowired
-	private RestTemplate restTemplate;*/
+
 	
 	@Autowired
 	private WebClient.Builder webClientBuilder;

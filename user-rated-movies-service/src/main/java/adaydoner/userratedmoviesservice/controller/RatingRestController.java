@@ -21,20 +21,20 @@ public class RatingRestController {
 		switch (userId) {
 		case "1":
 			ratings = Arrays.asList(
-					new Rating(userId,"2", 8.8),
-					new Rating(userId,"3", 9.3)
+					new Rating(userId,"550", 8.8),
+					new Rating(userId,"551", 9.3)
 					);
 			break;
 		case "2":
 			ratings = Arrays.asList(
-					new Rating(userId,"1", 2),
-					new Rating(userId,"3", 2)
+					new Rating(userId,"11", 2),
+					new Rating(userId,"12", 2)
 					);
 			break;
 		case "3":
 			ratings = Arrays.asList(
-					new Rating(userId,"1", 3),
-					new Rating(userId,"2", 3)
+					new Rating(userId,"13", 3),
+					new Rating(userId,"15", 3)
 					);
 			break;
 		default:

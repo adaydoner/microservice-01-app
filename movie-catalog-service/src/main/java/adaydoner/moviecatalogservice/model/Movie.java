@@ -3,18 +3,20 @@ package adaydoner.moviecatalogservice.model;
 public class Movie {
 
 	private int id;
-	private String name;
-	private String desc;
+	private String title;
+	private String overview;
 
+	
 	public Movie() {
 
 	}
 
-	public Movie(int movieId, String movieName, String desc) {
-		id = movieId;
-		name = movieName;
-		this.desc = desc;
+	public Movie(int id, String title, String overview) {
+		this.id = id;
+		this.title = title;
+		this.overview = overview;
 	}
+
 
 	/**
 	 * getters and setters
@@ -27,31 +29,32 @@ public class Movie {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getOverview() {
+		return overview;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
-	
+
+
 	/**
 	 * toString()
 	 */
 
 	@Override
 	public String toString() {
-		return "Movie [movieId=" + id + ", movieName=" + name + "]";
+		return "Movie [id=" + id + ", title=" + title + ", overview=" + overview + "]";
 	}
-
+	
 	
 
 }
