@@ -20,13 +20,13 @@ public class CatalogRestController {
 
 	
 	@Autowired
-	private WebClient.Builder webClientBuilder;
+	private WebClient webClient;
 	
 	
 	@RequestMapping("/{userId}")
 	public List<Catalog> getCatalogsByUserId(@PathVariable("userId") int userId){
 		
-		UserRatings ratings = webClientBuilder.build()
+		UserRatings ratings = webClient
 				.get()
 				.uri("http://user-rated-movies-service/ratingsdata/users/"+ userId)
 				.retrieve()
@@ -35,8 +35,7 @@ public class CatalogRestController {
 		
 		
 		return ratings.getUserRatings().stream().map(oneOfRatings -> {
-			//Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+ oneOfRatings.getMovieId(),Movie.class);
-			Movie movie = webClientBuilder.build() // creating web client 
+			Movie movie = webClient // using created web client 
 					.get() // http method that we want to use
 					.uri("http://movie-info-service/movies/"+ oneOfRatings.getMovieId()) // requested uri
 					.retrieve()

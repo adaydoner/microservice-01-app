@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import adaydoner.movieinfoservice.model.Movie;
+import ch.qos.logback.core.util.Duration;
 
 @RestController
 @RequestMapping("/movies")
@@ -17,18 +18,18 @@ public class MovieRestController {
 	private String apiKey;
 	
 	@Autowired
-	private WebClient.Builder webClientBuilder;
+	private WebClient webClient;
 
 	
 	@RequestMapping("/{movieId}")
 	public Movie getMovieById(@PathVariable("movieId") int movieId) {
 		
-		Movie movieDetails = webClientBuilder
-				.build()
+		Movie movieDetails = webClient
 				.get()
 				.uri("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey)
 				.retrieve()
-				.bodyToMono(Movie.class).block();
+				.bodyToMono(Movie.class)
+				.block();
 		
 
 		return new Movie(movieId, movieDetails.getTitle(), movieDetails.getOverview());
